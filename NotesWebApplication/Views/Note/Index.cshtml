@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Заметки";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Заметки</h1>
+    <p>В данном веб приложении вы можете создавать, изменять и редактировать свои заметки.</p>
+    <a href="/note/create" class="btn btn-primary">Создать заметку</a>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        @foreach (var note in Model)
+        {
+            <div class="card" style="width: 20rem;">
+                @*<img src="" class="card-img-top" alt="...">*@
+                <div class="card-body">
+                    <h5 class="card-title">@note.Name</h5>
+                    <p class="card-text">@note.Text</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i>Дата измнения: @note.UpdationDate</i></li>
+                </ul>
+                <div class="card-footer">
+                    <a asp-action="Edit" asp-route-id="@note.Id" class="btn btn-primary">Просмотреть</a> |
+                    <a asp-action="Delete" asp-route-id="@note.Id" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
